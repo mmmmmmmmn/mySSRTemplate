@@ -5,8 +5,8 @@
     "description": "",
     "main": "src/server/index.tsx",
     "scripts": {
-        "build": "npm run clean && webpack --mode production",
         "clean": "rimraf dist",
+        "build": "npm run clean && webpack --mode production",
         "format": "prettier -w --ignore-path .gitignore .",
         "lint": "eslint --fix --ignore-path .gitignore .",
         "watch:type": "tsc -w",
