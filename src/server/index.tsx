@@ -1,12 +1,13 @@
 import React from 'react'
 import { renderToString } from 'react-dom/server'
+import { StaticRouter } from 'react-router-dom'
 import App from '../client/App'
 import express from 'express'
 
 const app = express()
 app.use(express.static('dist'))
 
-app.get('/', (_, res) => {
+app.get('*', (req, res) => {
     res.status(200).send(`
         <!DOCTYPE html>
         <html lang="ja">
@@ -16,7 +17,11 @@ app.get('/', (_, res) => {
                 <title>Document</title>
             </head>
             <body>
-                <div id="root">${renderToString(<App />)}</div>
+                <div id="root">${renderToString(
+                    <StaticRouter location={req.url}>
+                        <App />
+                    </StaticRouter>,
+                )}</div>
                 <script src="./bundle.js"></script>
             </body>
         </html>

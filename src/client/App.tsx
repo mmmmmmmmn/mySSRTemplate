@@ -1,14 +1,24 @@
 import React from 'react'
 
-const App: React.FC = () => {
-    const [count, setCount] = React.useState(0)
+import { Switch, Route } from 'react-router-dom'
 
-    return (
-        <>
-            <div>count: {count}</div>
-            <button onClick={() => setCount(count => count + 1)}>increment</button>
-        </>
-    )
-}
+import Header from './layouts/Header'
+
+import Index from './pages/Index'
+import About from './pages/About'
+import Settings from './pages/Settings'
+import NotFound from './pages/NotFound'
+
+const App: React.FC = () => (
+    <>
+        <Header />
+        <Switch>
+            <Route exact path='/' component={Index}></Route>
+            <Route exact path='/about' component={About}></Route>
+            <Route exact path='/settings' component={Settings}></Route>
+            <Route component={NotFound} />
+        </Switch>
+    </>
+)
 
 export default App
