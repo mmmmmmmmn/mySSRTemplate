@@ -9,16 +9,22 @@ module.exports = {
     parserOptions: {
         ecmaVersion: 2018,
     },
-    rules: {
-        eqeqeq: 2,
-        'no-var': 2,
-        'prefer-const': 2,
-    },
     overrides: [
+        {
+            files: ['*.js'],
+            extends: ['eslint:recommended', 'plugin:prettier/recommended'],
+            rules: {
+                eqeqeq: 2,
+            },
+        },
         {
             files: ['*.ts', '*.tsx'],
             extends: ['plugin:@typescript-eslint/recommended', 'prettier/@typescript-eslint'],
             plugins: ['@typescript-eslint'],
+            rules: {
+                eqeqeq: 2,
+                'no-unreachable': 2,
+            },
         },
     ],
     settings: {
